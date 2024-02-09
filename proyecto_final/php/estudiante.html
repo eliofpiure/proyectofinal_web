@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inf Estudiante</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Información del Estudiante </h2>
+        
+        <script>
+            // Extraer la información de la URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var encodedData = urlParams.get('data');
+
+            // Decodificar la información y convertirla de nuevo a objeto
+            var decodedData = JSON.parse(decodeURIComponent(encodedData));
+
+            // Mostrar la información en la página
+            var resultadoEstudianteDiv = document.createElement('div');
+            resultadoEstudianteDiv.innerHTML = '<pre>' + JSON.stringify(decodedData, null, 2) + '</pre>';
+            document.body.appendChild(resultadoEstudianteDiv);
+
+            // Guardar los datos en el almacenamiento local del navegador
+            localStorage.setItem('datosEstudiante', JSON.stringify(decodedData));
+        </script>
+    </div>
+</body>
+
+</html>
